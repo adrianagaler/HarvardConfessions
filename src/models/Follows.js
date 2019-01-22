@@ -16,8 +16,8 @@ class Follows extends BaseModel {
         join: {
           from: 'follows.followingId',
           through: {
-              from: 'follows.followerId',
-              to: 'follows.followingId'
+            from: 'follows.followerId',
+            to: 'follows.followingId',
           },
           to: 'users.id',
         },

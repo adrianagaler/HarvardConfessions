@@ -1,4 +1,5 @@
 const User = require('../../../models/User')
+const { raw } = require('objection')
 
 const userResolver = async (obj, args, context) => {
   const user = await User.query().where('id', args.id)
@@ -7,13 +8,16 @@ const userResolver = async (obj, args, context) => {
 
 const usersResolver = async (obj, args, context) => {
   const { substr } = args
-  const users = await User.query()
-  .modify(function(queryBuilder){
-    if(substr) {
-      queryBuilder.where(raw('lower("nickname")'), 'like', '%' + substr.toLowerCase() + '%')
+  const users = await User.query().modify(queryBuilder => {
+    if (substr) {
+      queryBuilder.where(
+        raw('lower("nickname")'),
+        'like',
+        `%${substr.toLowerCase()}%`,
+      )
     }
   })
-  return users;
+  return users
 }
 
 const resolver = {

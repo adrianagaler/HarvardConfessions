@@ -3,12 +3,7 @@ const gql = require('graphql-tag')
 module.exports = gql`
   type Query {
     user(id: ID!): User!
-    users(
-      substr: String
-      hometown: String
-      house: String
-      concentration: String
-    ): [User!]
+    users(substr: String): [User!]
     post(id: ID!): Post!
     posts: [Post!]
   }
@@ -16,54 +11,57 @@ module.exports = gql`
   type Mutation {
     createUser(input: CreateUserInput!): LoginReturn!
     createPost(content: String!): CreatePostReturn!
-    editPost(id: ID!, newContent: String!): EditPostReturn!
     loginUser(email: String!, password: String!): LoginReturn!
+    createComment(content: String!): CreateCommentReturn!
+    createFollow(input: CreateFollowInput!): CreateFollowReturn!
   }
 
   type CreatePostReturn {
     post: Post
     error: Error
   }
-
-  type EditPostReturn {
-    post: Post
+  type CreateCommentReturn {
+    comment: Comment
     error: Error
   }
+  input CreateFollowInput {
+    followerId: ID!
+    followingId: ID!
+  }
 
+  type CreateFollowReturn {
+    follow: Follow!
+    error: Error
+  }
   input CreateUserInput {
     name: String!
     email: String!
     password: String!
-    birthday: String
-    concentration: String
-    hometown: String
     house: String
-    gender: String
-    bio: String
-    picture: String
-    hobbies: [HobbyInput!]
   }
-
-  input HobbyInput {
-    hobby: String!
+  type Comment {
+    id: ID!
+    postId: ID!
+    author: ID!
+    content: String!
+  }
+  type Follow {
+    id: ID!
+    followerId: ID!
+    followingId: ID!
   }
 
   type User {
     id: ID!
-    name: String!
+    nickname: String!
     email: String!
-    birthday: String
-    concentration: String
-    hometown: String
     house: String
-    gender: String
-    bio: String
-    picture: String
   }
 
   type Post {
     id: ID!
     content: String!
+    userId: String
   }
 
   type LoginReturn {

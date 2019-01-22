@@ -11,7 +11,7 @@ In a separate terminal, run
 
 ```bash
 npm run db
-bootcampproject=# \i config/script.sql
+confessions=# \i config/script.sql
 ```
 
 ## Run

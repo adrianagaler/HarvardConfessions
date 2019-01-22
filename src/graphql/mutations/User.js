@@ -6,15 +6,9 @@ const _ = require('lodash')
 
 const createUser = async (obj, { input }) => {
   const registerInput = _.pick(input, [
-    'name',
+    'nickname',
     'email',
-    'birthday',
-    'concentration',
-    'hometown',
     'house',
-    'gender',
-    'bio',
-    'picture',
   ])
 
   const result = await User.query().findOne('email', input.email)

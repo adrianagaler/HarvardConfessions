@@ -17,7 +17,7 @@ confessions=# \i config/script.sql
 ## Run
 
 ```bash
-npm run start
+npm run startgit s
 ```
 
 ## Make migration

@@ -1,35 +1,21 @@
 const casual = require('casual')
 
-casual.define('user', name => ({
+casual.define('user', nickname => ({
   id: casual.uuid,
   email: casual.email,
-  name,
+  nickname,
   password: casual.password,
-  birthday: casual.date(),
-  concentration: casual.random_element([
-    'CS',
-    'Classics',
-    'Anthro',
-    'Ec',
-    'AppliedMath',
+  house: casual.random_element([
+    'DUnster',
+    'Adams',
+    'Leverett',
+    'Winthrop',
+    'Quad',
   ]),
-  hometown: casual.city,
-  house: casual.random_element(['Kirkland', 'Pfoho', 'Winthrop', 'Dunster']),
-  gender: casual.random_element(['Male', 'Female', 'Other']),
-  bio: casual.description,
-  picture: 'https://picsum.photos/200?random',
 }))
 
-const names = [
-  'Bliss',
-  'Jada',
-  'Diego',
-  'Dalton',
-  'Elizabeth',
-  'Kofi',
-  'Spencer',
-]
+const nicknames = ['Jovi', 'Jada', 'Diego', 'Adriana', 'Lara', 'Milan', 'Luke']
 
-const users = names.map(name => casual.user(name))
+const users = nicknames.map(nickname => casual.user(nickname))
 
 module.exports = users

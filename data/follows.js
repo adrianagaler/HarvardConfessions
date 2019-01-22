@@ -1,9 +1,9 @@
 const casual = require('casual')
 
-casual.define('post', () => ({
+casual.define('follower', () => ({
   id: casual.uuid,
-  content: casual.sentences(2),
-  nickname: casual.random_element([
+  follower: casual.uuid,
+  following: casual.random_element([
     'Jovi',
     'Jada',
     'Diego',
@@ -14,10 +14,10 @@ casual.define('post', () => ({
   ]),
 }))
 
-const posts = []
+const follows = []
 
 for (let i = 0; i < 15; i++) {
-  posts.push(casual.post)
+  follows.push(casual.follower)
 }
 
-module.exports = posts
+module.exports = follows

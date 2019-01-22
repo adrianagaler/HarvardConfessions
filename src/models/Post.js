@@ -19,12 +19,12 @@ class Post extends BaseModel {
         },
       },
       comments: {
-          relation: HasManyRelation,
-          modelClass: Comment,
-          join: {
-              from: 'posts.id',
-              to: 'comments.postId'
-          },
+        relation: HasManyRelation,
+        modelClass: Comment,
+        join: {
+          from: 'posts.id',
+          to: 'comments.postId',
+        },
       },
     }
   }

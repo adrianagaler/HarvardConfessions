@@ -8,6 +8,7 @@ class Post extends BaseModel {
 
   static get relationMappings() {
     const User = require('./User')
+    const Comment = require('./Comment')
 
     return {
       posts: {

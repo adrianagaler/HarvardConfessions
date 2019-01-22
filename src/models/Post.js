@@ -1,5 +1,5 @@
 const BaseModel = require('./BaseModel')
-const { BelongsToOneRelation } = require('objection')
+const { BelongsToOneRelation, HasManyRelation } = require('objection')
 
 class Post extends BaseModel {
   static get tableName() {
@@ -17,6 +17,14 @@ class Post extends BaseModel {
           from: 'posts.userId',
           to: 'users.id',
         },
+      },
+      comments: {
+          relation: HasManyRelation,
+          modelClass: Comment,
+          join: {
+              from: 'posts.id',
+              to: 'comments.postId'
+          },
       },
     }
   }

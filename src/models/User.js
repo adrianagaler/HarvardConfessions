@@ -1,11 +1,11 @@
 const BaseModel = require('./BaseModel')
 const { HasManyRelation, ManyToManyRelation } = require('objection')
 
-class Users extends BaseModel {
+class User extends BaseModel {
     static get tableName(){
         return 'users';
     }
-}
+
     static get relationMappings() {
         const Post = require('./Post');
         const Follows = require('./Follows');
@@ -23,11 +23,14 @@ class Users extends BaseModel {
                 modelClass: Follows,
                 join: {
                     from: 'follows.followingId',
-                    to: 'follows.followerId',
-                }
-                to: 'users.id',
-            },s
-        },
+                    through:{
+                        from:'follows.followingId',
+                        to: 'follows.followerId',
+                    },
+                    to: 'users.id',
+                },
+            },
+        }
     }
 }
 

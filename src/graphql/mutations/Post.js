@@ -32,17 +32,6 @@ const createPost = async (obj, { content }, context) => {
   }
 }
 
-const editPost = async (obj, args, context) => {
-  const { id, newContent } = args
-  if (!context.user) {
-    return {
-      error: {
-        message: 'User not logged in',
-      },
-    }
-  }
-  // TODO - finish this function which edits a post given its id and new content.
-}
 
 const resolver = { Mutation: { createPost } }
 

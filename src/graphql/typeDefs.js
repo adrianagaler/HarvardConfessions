@@ -37,7 +37,7 @@ module.exports = gql`
     error: Error
   }
   input CreateUserInput {
-    name: String!
+    nickname: String!
     email: String!
     password: String!
     house: String
@@ -65,6 +65,8 @@ module.exports = gql`
     id: ID!
     content: String!
     userId: String
+    user: User
+    comments: [Comment]
   }
 
   type LoginReturn {

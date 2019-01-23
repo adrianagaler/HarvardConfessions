@@ -11,8 +11,8 @@ const postResolver = async (obj, args, context) => {
 }
 
 const commentsResolver = async (obj, args, context) => {
-  const comment = await Comment.query().where('postId', args.postId)
-  return comment
+  const comments = await Comment.query().where('postId', args.id)
+  return comments
 }
 
 const postsResolver = async (obj, args, context) => {
@@ -23,9 +23,14 @@ const postsResolver = async (obj, args, context) => {
   return postlist
 }
 
-const postuserResolver = async (obj, args, context) => {
-  const user = await User.query.findById(obj.userId)
+const postUserResolver = async (obj, args, context) => {
+  const user = await User.query().findById(obj.userId)
   return user
+}
+
+const postCommentsResolver = async (obj, args, context) => {
+  const comments = await Comment.query().where('postId', obj.id)
+  return comments
 }
 
 const resolver = {
@@ -34,10 +39,10 @@ const resolver = {
     posts: postsResolver,
     comments: commentsResolver,
   },
-  // Post: {
-  //   user: postuserResolver,
-  //   // comments: postResolver,
-  // },
+  Post: {
+    user: postUserResolver,
+    comments: postCommentsResolver,
+  },
 }
 
 module.exports = resolver

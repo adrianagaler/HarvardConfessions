@@ -65,6 +65,8 @@ module.exports = gql`
     id: ID!
     content: String!
     userId: String
+    user: User
+    comments: [Comment]
   }
 
   type LoginReturn {

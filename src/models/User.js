@@ -9,6 +9,7 @@ class User extends BaseModel {
   static get relationMappings() {
     const Post = require('./Post')
     const Follows = require('./Follows')
+    const Comment = require('./Comment')
     return {
       posts: {
         relation: HasManyRelation,
@@ -28,6 +29,14 @@ class User extends BaseModel {
             to: 'follows.followerId',
           },
           to: 'users.id',
+        },
+      },
+      comments: {
+        relation: HasManyRelation,
+        modelClass: Comment,
+        join: {
+          from: 'user.id',
+          to: 'comments.author',
         },
       },
     }

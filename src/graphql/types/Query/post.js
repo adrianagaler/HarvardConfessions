@@ -40,10 +40,10 @@ const resolver = {
     comment: commentResolver,
     comments: commentsResolver,
   },
-  Post: {
-    user: postuserResolver,
-    comments: postResolver,
-  },
+  // Post: {
+  //   user: postuserResolver,
+  //   // comments: postResolver,
+  // },
 }
 
 module.exports = resolver

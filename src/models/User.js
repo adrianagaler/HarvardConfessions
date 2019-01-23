@@ -13,7 +13,7 @@ class User extends BaseModel {
     return {
       posts: {
         relation: HasManyRelation,
-        modeClass: Post,
+        modelClass: Post,
         join: {
           from: 'users.id',
           to: 'posts.userId',

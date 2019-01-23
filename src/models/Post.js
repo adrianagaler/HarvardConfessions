@@ -11,7 +11,7 @@ class Post extends BaseModel {
     const Comment = require('./Comment')
 
     return {
-      posts: {
+      user: {
         relation: BelongsToOneRelation,
         modelClass: User,
         join: {

@@ -27,6 +27,7 @@ class Comment extends BaseModel {
           to: 'users.id',
         },
       },
+
     }
   }
 }

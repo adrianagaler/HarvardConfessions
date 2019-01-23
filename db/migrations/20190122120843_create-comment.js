@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       .uuid('id')
       .primary()
       .notNull()
-    table.uuid('content').notNull()
+    table.text('content').notNull()
     table.uuid('postId').references('posts.id')
     table.uuid('author').references('users.id')
     table

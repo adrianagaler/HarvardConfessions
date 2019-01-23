@@ -1,6 +1,6 @@
 const usersData = require('../../../data/users')
 const postsData = require('../../../data/posts')
-const followsData = require('../../../data/follows')
+// const followsData = require('../../../data/follows')
 const commentsData = require('../../../data/comments')
 
 const createPost = (knex, post, nickname) => {
@@ -17,19 +17,38 @@ const createPost = (knex, post, nickname) => {
     })
 }
 
-const createFollow = (knex, followobj, nickname) => {
+const createComment = (knex, commentObj, nickname) => {
   return knex('users')
     .where('nickname', nickname)
     .first()
     .then(user => {
-      const { followerId, id } = followobj
-      return knex('follows').insert({
+      const { content, id } = commentObj
+      return knex('comments').insert({
         id,
-        followerId,
-        userId: user.id,
+        content,
+        author: user.id,
       })
     })
 }
+
+// const createFollow = (knex, followobj, nickname) => {
+//   return knex('users')
+//     .where('nickname', nickname)
+//     .first()
+//     .then(user => {
+//       const { followingId, id } = followobj
+//       return knex('users')
+//         .where('id', id)
+//         .first()
+//         .then(user => {
+//           return knex('follows').insert({
+//             id,
+//             followerId: user.id,
+//             followingId,
+//           })
+//         })
+//     })
+// }
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
@@ -42,14 +61,14 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       const postsPromises = postsData.map(post =>
-        createPost(knex, post, post.name),
+        createPost(knex, post, post.nickname),
       )
       return Promise.all(postsPromises)
     })
     .then(() => {
-      const followsPromises = followsData.map(follow =>
-        createFollow(knex, follow, follow.name),
+      const commentsPromises = commentsData.map(follow =>
+        createComment(knex, follow, follow.nickname),
       )
-      return Promise.all(followsPromises)
+      return Promise.all(commentsPromises)
     })
 }

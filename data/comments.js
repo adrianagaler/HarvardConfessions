@@ -2,7 +2,7 @@ const casual = require('casual')
 
 casual.define('comment', () => ({
   id: casual.uuid,
-  comment: casual.random_element([
+  content: casual.random_element([
     'I am cool ',
     'Me too',
     'Harvard sucks',

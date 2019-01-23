@@ -6,10 +6,9 @@ module.exports = gql`
     users(substr: String): [User!]
     post(id: ID!): Post!
     posts: [Post!]
-    comments: [Comment]
-    comment: Comment
-    following: [Follow]
-    followers: [Follow]
+    comments(postId: ID!): [Comment]
+    following(id: ID!): [Follow]
+    followers(id: ID!): [Follow]
   }
 
   type Mutation {

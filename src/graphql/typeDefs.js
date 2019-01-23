@@ -6,10 +6,6 @@ module.exports = gql`
     users(substr: String): [User!]
     post(id: ID!): Post!
     posts: [Post!]
-    comments: [Comment]
-    comment: Comment
-    following: [Follow]
-    followers: [Follow]
   }
 
   type Mutation {
@@ -38,7 +34,7 @@ module.exports = gql`
     error: Error
   }
   input CreateUserInput {
-    name: String!
+    nickname: String!
     email: String!
     password: String!
     house: String

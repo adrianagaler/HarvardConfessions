@@ -10,14 +10,9 @@ const postResolver = async (obj, args, context) => {
   return post
 }
 
-const commentResolver = async (obj, args, context) => {
-  const comment = await Comment.query().findById(args.id)
-  return comment
-}
-
 const commentsResolver = async (obj, args, context) => {
-  const comments = await Comment.query()
-  return comments
+  const comment = await Comment.query().where('postId', args.postId)
+  return comment
 }
 
 const postsResolver = async (obj, args, context) => {
@@ -37,7 +32,6 @@ const resolver = {
   Query: {
     post: postResolver,
     posts: postsResolver,
-    comment: commentResolver,
     comments: commentsResolver,
   },
   // Post: {

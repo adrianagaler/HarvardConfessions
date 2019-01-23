@@ -23,8 +23,8 @@ const usersResolver = async (obj, args, context) => {
 
 const followersResolver = async (obj, args, context) => {
   const follows = await Follows.query().modify(queryBuilder => {
-    if (args.status) {
-      queryBuilder.where('followerId', args.followerId)
+    if (args.id) {
+      queryBuilder.where('followerId', args.id)
     }
   })
   return follows
@@ -32,8 +32,8 @@ const followersResolver = async (obj, args, context) => {
 
 const followingResolver = async (obj, args, context) => {
   const follows = await Follows.query().modify(queryBuilder => {
-    if (args.status) {
-      queryBuilder.where('followerId', args.followingId)
+    if (args.id) {
+      queryBuilder.where('followingId', args.id)
     }
   })
   return follows

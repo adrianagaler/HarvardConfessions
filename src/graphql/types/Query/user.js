@@ -1,4 +1,4 @@
-
+const Follows = require('../../../models/Follows')
 const User = require('../../../models/User')
 const { raw } = require('objection')
 
@@ -22,27 +22,22 @@ const usersResolver = async (obj, args, context) => {
 }
 
 const followersResolver = async (obj, args, context) => {
-  
-  const follows = await Follows.query()
-  .modify(function(queryBuilder){
-  if (args.status){
-    queryBuilder.where('followerId', args.followerId)
-  }
-})
+  const follows = await Follows.query().modify(queryBuilder => {
+    if (args.status) {
+      queryBuilder.where('followerId', args.followerId)
+    }
+  })
   return follows
 }
 
 const followingResolver = async (obj, args, context) => {
-
-  const follows = await Follows.query()
-  .modify(function(queryBuilder){
-  if (args.status){
-    queryBuilder.where('followerId', args.followingId)
-  }
-})
+  const follows = await Follows.query().modify(queryBuilder => {
+    if (args.status) {
+      queryBuilder.where('followerId', args.followingId)
+    }
+  })
   return follows
 }
-
 
 const resolver = {
   Query: {

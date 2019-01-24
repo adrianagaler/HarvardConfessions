@@ -1,15 +1,8 @@
+const Follows = require('../../models/Follows')
 const User = require('../../models/User')
-// const Follows = require('../../models/Follows')
 
 const createFollow = async (obj, { input }, context) => {
-  if (!context.user) {
-    return {
-      error: {
-        message: 'User not logged in',
-      },
-    }
-  }
-
+  const followingId = input
   const user = await User.query()
     .where('id', context.user.id)
     .then(res => res[0])
@@ -21,15 +14,27 @@ const createFollow = async (obj, { input }, context) => {
       },
     }
   }
-
-  const follow = await user.$relatedQuery('follows').insert(input.id)
-
-  if (!follow) {
-    throw new Error('Could not follow.')
+  const test = await Follows.query()
+    .where('followerId', context.user.id)
+    .andWhere('followingId', followingId)
+  if (test.length || followingId === context.user.id) {
+    return {
+      error: {
+        message:
+          'You are either following this user and/or you cannot follow yourself',
+      },
+    }
   }
-
+  const follow = await Follows.query().insertAndFetch({
+    followerId: context.user.id,
+    followingId,
+  })
   return {
-    follow,
+    follow: {
+      id: follow.id,
+      followerId: context.user.id,
+      followingId,
+    },
   }
 }
 

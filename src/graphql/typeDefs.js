@@ -15,7 +15,7 @@ module.exports = gql`
     createUser(input: CreateUserInput!): LoginReturn!
     createPost(content: String!): CreatePostReturn!
     loginUser(email: String!, password: String!): LoginReturn!
-    createComment(content: String!): CreateCommentReturn!
+    createComment(input: CreateCommentInput!): CreateCommentReturn!
     createFollow(input: CreateFollowInput!): CreateFollowReturn!
   }
 
@@ -27,13 +27,17 @@ module.exports = gql`
     comment: Comment
     error: Error
   }
+  input CreateCommentInput {
+    postId: ID!
+    author: ID!
+    content: String!
+  }
   input CreateFollowInput {
-    followerId: ID!
     followingId: ID!
   }
 
   type CreateFollowReturn {
-    follow: Follow!
+    follow: Follow
     error: Error
   }
   input CreateUserInput {

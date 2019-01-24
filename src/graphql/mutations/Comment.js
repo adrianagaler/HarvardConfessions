@@ -1,38 +1,36 @@
-const Post = require('../../models/Post')
+const Comment = require('../../models/Comment')
 
+const createComment = async (obj, { input }, context) => {
+  const { postId, content } = input
 
-const createComment = async (obj, { content }, context) => {
-    if (!context.user) {
-        return {
-            error: {
-                message: 'You need to be logged in to comment',
-            },
-        }
-    }
-    
-    const post = await Post.Query()
-        .where('id', context.user.id)
-        .then(res => res[0])
-
-    if (!post) {
-        return {
-            error: {
-                message: 'Post does not exist.'
-            },
-        }
-    }
-
-    const comment = await post.$relatedQuery('posts').insert({ content })
-
-    if (!comment) {
-        throw new Error ('Could not add comment!')
-    }
-
+  if (!context.user) {
     return {
-        comment,
+      error: {
+        message: 'You need to be logged in to comment',
+      },
     }
+  }
+  const author = context.user.id
+  const comment = await Comment.query().insertAndFetch({
+    postId,
+    author,
+    content,
+  })
+
+  if (!comment) {
+    throw new Error('Could not add comment!')
+  }
+
+  return {
+    comment: {
+      id: comment.id,
+      postId,
+      author,
+      content,
+    },
+  }
 }
 
-const resolver = { Mutation : { createComment }}
+const resolver = { Mutation: { createComment } }
 
 module.exports = resolver

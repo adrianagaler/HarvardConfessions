@@ -11,7 +11,9 @@ const postResolver = async (obj, args, context) => {
 }
 
 const commentsResolver = async (obj, args, context) => {
-  const comments = await Comment.query().where('postId', args.id)
+  const comments = await Comment.query()
+    .where('postId', args.id)
+    .orderBy('createdAt')
   return comments
 }
 
@@ -29,7 +31,9 @@ const postUserResolver = async (obj, args, context) => {
 }
 
 const postCommentsResolver = async (obj, args, context) => {
-  const comments = await Comment.query().where('postId', obj.id)
+  const comments = await Comment.query()
+    .where('postId', obj.id)
+    .orderBy('createdAt')
   return comments
 }
 

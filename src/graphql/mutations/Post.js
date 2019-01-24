@@ -1,6 +1,6 @@
 const User = require('../../models/User')
 
-const createPost = async (obj, { content }, context) => {
+const createPost = async (obj, {input}, context) => {
   // if (!context.user) {
   //   return {
   //     error: {
@@ -8,8 +8,12 @@ const createPost = async (obj, { content }, context) => {
   //     },
   //   }
   // }
+  const { gif, content } = input
+  console.log(gif)
+  console.log(content)
+
   const user = await User.query()
-    .where('id', "d6dec27d-7606-44e0-9d6d-ad92cf7a4c94")
+    .where('id', context.user.id )
     .then(res => res[0])
 
   // if (!user) {
@@ -20,7 +24,8 @@ const createPost = async (obj, { content }, context) => {
   //   }
   // }
 
-  const post = await user.$relatedQuery('posts').insertAndFetch({ content })
+  const post = await user.$relatedQuery('posts')
+    .insertAndFetch({ content: content , gif: gif })
 
   if (!post) {
     throw new Error('Could not add post')
@@ -30,11 +35,11 @@ const createPost = async (obj, { content }, context) => {
     post: {
       id: post.id,
       content: post.content,
-      userId: post.userId
+      userId: post.userId,
+      gif: post.gif,
     }
   } 
 }
-
 
 const resolver = { Mutation: { createPost } }
 

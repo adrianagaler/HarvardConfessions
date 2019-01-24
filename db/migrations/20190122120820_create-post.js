@@ -10,6 +10,8 @@ exports.up = function(knex, Promise) {
       .references('users.id')
       .notNull()
     table
+      .text('gif')
+    table
       .timestamp('createdAt')
       .defaultTo(knex.fn.now())
       .notNull()

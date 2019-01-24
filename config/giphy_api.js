@@ -10,9 +10,11 @@ const test = giphy.search('gifs', {"q": "cats", "limit" : "10"})
     response.data.forEach((gifObject) => {
       url_list.push(gifObject.embed_url)
     })
+    console.log(url_list)
   })
   .catch((err) => {
   })
+
 
 module.exports = { giphy }
 

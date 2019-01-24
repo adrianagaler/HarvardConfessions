@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 const loginUser = async (obj, { email, password }) => {
   const user = await User.query().findOne('email', email)
 
+
   if (!user) {
     return {
       error: 'Email does not exist.',

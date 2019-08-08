@@ -7,7 +7,7 @@ createdb bootcampproject
 npm run copy-env
 ```
 
-In a separate terminal, run
+In a separate bash, run
 
 ```bash
 npm run db

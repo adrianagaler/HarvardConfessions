@@ -38,3 +38,4 @@ Install all necessary packages :
 Then RUN : `npm run build`
 To start in local host : `npm start`
 To Deploy : `npm run deploy`
+If errors occur, do : `npm install gh-pages@latest", then deploy

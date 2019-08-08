@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 12.4.0
+cache:
+  directories:
+    - node_modules
+# install:
+#   - travis_wait npm install -g npm@latest --save react react-dom react-scripts
+#   - npm i apollo-boost graphql react-apollo -S
+#   - npm install --save react-center
+#   - npm install react-gif-player react react-dom
+#   - npm i react-giphy-component --save
+script:
+  - travis_wait npm run build
+  - npm start
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $githubtoken1
+  local_dir: build
+  on:
+    branch: master

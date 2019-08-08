@@ -1,3 +1,5 @@
+### Only frontend deployed for reference at this [link] (https://harvard-confessions.herokuapp.com/)  (after log in and sign up pages, it does not work without the backed):
+
 # Bootcamp Project API
 
 ## Set up
@@ -68,9 +70,10 @@ Hobbies:
 - userId
 
 1.  Made the tables using Knex migrations
+
     - run `npx knex migrate:make <MIGRATION_NAME>` to make a migration file
-    -  new file is in the `/db/migrations/` directory
-    - in that migration, filled in the information needed for that table. 
+    - new file is in the `/db/migrations/` directory
+    - in that migration, filled in the information needed for that table.
 
 2.  Made the Objection.js models for users, posts, and hobbies in the `/src/models/` directory.
     - A skeleton of the `User` model
@@ -85,4 +88,3 @@ Complete functions which take advantage of Objection.js functionality to query f
 Implemented the functions marked as TODO in `/src/graphql/types/user`, `/src/graphql/types/post`, and `src/graphql/mutations/Post` as per the specifications given therein.
 
 Refer to the Knex documentation and lecture code for syntactical clarifications: https://knexjs.org/
-

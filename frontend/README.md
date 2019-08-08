@@ -2,6 +2,10 @@
 
 A repository with starter code for DEV Winter Bootcamp Frontend projects.
 
+## Only frontend deployed for reference (after log in and sign up, it does not work without the backed):
+
+https://harvard-confessions.herokuapp.com/
+
 ## Starting a New Project
 
 Run the following command to clone this repo:
@@ -38,4 +42,3 @@ Install all necessary packages :
 Then RUN : `npm run build`
 To start in local host : `npm start`
 To Deploy : `npm run deploy`
-If errors occur, do : `npm install gh-pages@latest", then deploy

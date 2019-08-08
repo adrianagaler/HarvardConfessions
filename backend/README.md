@@ -17,7 +17,11 @@ confessions=# \i config/script.sql
 ## Run
 
 ```bash
-npm run start s
+npm run start
+```
+
+```node
+npm install knex
 ```
 
 ## Make migration

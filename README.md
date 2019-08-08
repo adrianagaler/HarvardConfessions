@@ -1,4 +1,6 @@
-Only frontend deployed for reference at this [link](https://harvard-confessions.herokuapp.com/) (after log in and sign up pages, it does not work without the backed):
+### Deployed App
+
+Only frontend deployed for reference at this [link](https://harvard-confessions.herokuapp.com/) (after log in and sign up pages, it does not work without the backend):
 
 # Bootcamp Project API
 

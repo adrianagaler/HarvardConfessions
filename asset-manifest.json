@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/HarvardConfessions/static/js/main.2afa3322.chunk.js",
+    "main.js.map": "/HarvardConfessions/static/js/main.2afa3322.chunk.js.map",
+    "runtime~main.js": "/HarvardConfessions/static/js/runtime~main.b5b9061f.js",
+    "runtime~main.js.map": "/HarvardConfessions/static/js/runtime~main.b5b9061f.js.map",
+    "static/js/2.e9673f60.chunk.js": "/HarvardConfessions/static/js/2.e9673f60.chunk.js",
+    "static/js/2.e9673f60.chunk.js.map": "/HarvardConfessions/static/js/2.e9673f60.chunk.js.map",
+    "index.html": "/HarvardConfessions/index.html",
+    "precache-manifest.33b8092b8ae663fdb91b268d5040d759.js": "/HarvardConfessions/precache-manifest.33b8092b8ae663fdb91b268d5040d759.js",
+    "service-worker.js": "/HarvardConfessions/service-worker.js"
+  }
+}

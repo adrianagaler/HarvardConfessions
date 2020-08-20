@@ -7,7 +7,7 @@
     "apollo-server-express": "^1.4.0",
     "babel-eslint": "^9.0.0",
     "balanced-match": "^1.0.0",
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.2",
     "casual": "^1.6.0",
     "cors": "^2.8.5",
